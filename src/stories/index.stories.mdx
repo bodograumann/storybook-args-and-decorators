@@ -3,6 +3,12 @@ import { action } from '@storybook/addon-actions'
 import { linkTo } from '@storybook/addon-links'
 import MyButton from '../components/MyButton.vue';
 
+export const Template = (args, { argTypes }) => ({
+  components: { MyButton },
+  template: `<my-button>{{ text }}</my-button>`,
+  props: Object.keys(argTypes),
+});
+
 <Meta title="MDX / Button" component={MyButton} />
 
 # Button
@@ -24,10 +30,7 @@ This is a simple button with some text in it.
 You can even have Emoji in the button.
 
 <Canvas>
-  <Story name="With Some Emoji">
-    {{
-        components: { MyButton },
-        template: '<my-button>😀 😎 👍 💯</my-button>'
-    }}
-  </Story>
+  <Story name="With Some Emoji" args={{
+    text: '😀 😎 👍 💯',
+  }}>{Template.bind({})}</Story>
 </Canvas>
