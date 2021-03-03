@@ -1,5 +1,6 @@
 <template>
   <button class="button is-primary" @click="onClick">
+    {{ prefix }}:
     <!-- @slot default inner button content -->
     <slot></slot>
   </button>
@@ -8,6 +9,8 @@
 <script>
 export default {
   name: 'my-button',
+
+  inject: ['prefix'],
 
   methods: {
     onClick() {
